@@ -1,0 +1,96 @@
+/*
+13 Implement animation principles for any object
+*/
+
+#include <iostream>
+#include <GL/glut.h>
+#include <cmath>
+using namespace std;
+
+// Global variables for animation properties
+float angle = 0.0f;   // Rotation angle
+float scale = 1.0f;    // Scaling factor
+float moveX = 0.0f;    // Translation in X-axis
+float moveY = 0.0f;    // Translation in Y-axis
+
+// Function to initialize OpenGL settings
+void init() {
+    glClearColor(1.0, 1.0, 1.0, 1.0);  // Set background to white
+    glMatrixMode(GL_PROJECTION);
+    gluOrtho2D(0, 640, 0, 480);  // Set orthogonal projection
+    glClear(GL_COLOR_BUFFER_BIT); // Clear the window
+}
+
+// Function to draw a circle
+void drawCircle(float centerX, float centerY, float radius) {
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(centerX, centerY);  // Center of the circle
+    for (float angle = 0; angle <= 360; angle += 1) {
+        float rad = angle * (M_PI / 180);  // Convert to radians
+        glVertex2f(centerX + radius * cos(rad), centerY + radius * sin(rad));
+    }
+    glEnd();
+}
+
+// Function to display the animation
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);  // Clear the screen
+
+    glLoadIdentity();  // Reset the transformation matrix
+
+    // Apply transformations: Move, Rotate, and Scale
+    glTranslatef(moveX, moveY, 0);  // Translate the object
+    glRotatef(angle, 0, 0, 1);      // Rotate the object
+    glScalef(scale, scale, 1);      // Scale the object
+
+    // Draw the circle (object to animate)
+    glColor3f(0.0, 0.0, 1.0);  // Set circle color to blue
+    drawCircle(320, 240, 50);  // Draw circle at the center (320, 240) with radius 50
+
+    glutSwapBuffers();  // Swap buffers for double buffering
+}
+
+// Function to update animation parameters
+void update(int value) {
+    // Update rotation angle
+    angle += 2.0f;  
+    if (angle > 360) {
+        angle -= 360;  // Reset angle after full rotation
+    }
+
+    // Update translation (move across the screen)
+    moveX += 1.0f;
+    if (moveX > 640) {
+        moveX = 0;  // Reset the position when it moves off the screen
+    }
+
+    // Update scaling factor to simulate pulsating effect
+    scale = 1.0f + 0.5f * sin(angle * (M_PI / 180));
+
+    // Redraw the scene with new values
+    glutPostRedisplay();
+
+    // Call the update function again after 16ms (~60fps)
+    glutTimerFunc(16, update, 0);
+}
+
+// Main function
+int main(int argc, char** argv) {
+    // Initialize GLUT
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutInitWindowSize(640, 480);  // Set the window size
+    glutCreateWindow("Object Animation Example");
+
+    // Initialize OpenGL
+    init();
+
+    // Set display function and update function
+    glutDisplayFunc(display);
+    glutTimerFunc(25, update, 0);  // Start the update loop
+
+    // Start the GLUT event loop
+    glutMainLoop();
+
+    return 0;
+}
