@@ -1,0 +1,301 @@
+Sure, Prakhar! Here's a comprehensive set of **all important viva questions related to algorithms and curves** in **Computer Graphics**, with concise and clear answers. This includes **drawing algorithms, clipping algorithms, and curve-generation techniques** like **Bezier and B-spline curves**.
+
+---
+
+## 🔷 **1. Line Drawing Algorithms**
+
+1. **Q:** What is the DDA algorithm?
+   **A:** The Digital Differential Analyzer (DDA) algorithm calculates intermediate points of a line using floating-point increments.
+
+2. **Q:** What are the limitations of the DDA algorithm?
+   **A:**
+
+   * Uses floating-point arithmetic (slower).
+   * Can accumulate rounding errors.
+
+3. **Q:** What is Bresenham’s Line Drawing Algorithm?
+   **A:** An efficient line-drawing algorithm that uses only integer arithmetic and decision variables to plot a line.
+
+4. **Q:** Why is Bresenham’s algorithm better than DDA?
+   **A:** It uses integer calculations, which are faster and more accurate.
+
+5. **Q:** What is the decision parameter in Bresenham’s algorithm?
+   **A:** It determines whether the next pixel in a line will be directly horizontal or diagonal.
+
+6. **Q:** Can Bresenham’s algorithm draw lines with all slopes?
+   **A:** Yes, but different cases are handled based on the slope (slope < 1, > 1, negative slope, etc.).
+
+---
+
+## 🔷 **2. Circle and Ellipse Drawing Algorithms**
+
+7. **Q:** What is the Midpoint Circle Drawing Algorithm?
+   **A:** It draws a circle using symmetry and a decision parameter, updating points using integer arithmetic.
+
+8. **Q:** How does symmetry help in drawing circles?
+   **A:** A circle is symmetric in 8 directions; we compute one-eighth and replicate it to save computation.
+
+9. **Q:** What is the Midpoint Ellipse Algorithm?
+   **A:** Similar to circle drawing, it uses decision parameters and region-based calculations to draw an ellipse.
+
+---
+
+## 🔷 **3. Polygon Drawing & Filling**
+
+10. **Q:** What is scan-line polygon filling?
+    **A:** A method that fills polygons by processing each horizontal line (scan line) and determining where it intersects the polygon edges.
+
+11. **Q:** What is boundary fill algorithm?
+    **A:** A recursive algorithm that fills an area bounded by a color (boundary color).
+
+12. **Q:** What is flood fill algorithm?
+    **A:** Fills connected pixels starting from a seed point until a target color boundary is reached.
+
+---
+
+## 🔷 **4. Clipping Algorithms**
+
+13. **Q:** What is line clipping?
+    **A:** It’s the process of removing the part of a line that lies outside the viewing window.
+
+14. **Q:** Name some line clipping algorithms.
+    **A:**
+
+    * **Cohen-Sutherland Algorithm**
+    * **Liang-Barsky Algorithm**
+    * **Nicholl-Lee-Nicholl Algorithm**
+
+15. **Q:** What is the Cohen-Sutherland algorithm?
+    **A:** It assigns region codes to line endpoints and uses bitwise operations to detect visibility.
+
+16. **Q:** What is Liang-Barsky algorithm?
+    **A:** A line clipping algorithm that uses parameterized equations to clip the line based on window edges.
+
+17. **Q:** What is polygon clipping?
+    **A:** The process of clipping a polygon to fit within a viewing window.
+
+18. **Q:** Name a polygon clipping algorithm.
+    **A:** Sutherland–Hodgman polygon clipping algorithm.
+
+---
+
+## 🔷 **5. Curve Algorithms**
+
+19. **Q:** What are Bezier curves?
+    **A:** Smooth curves defined by control points, widely used in computer graphics for modeling and animation.
+
+20. **Q:** What is the degree of a Bezier curve?
+    **A:** If there are `n+1` control points, the degree of the Bezier curve is `n`.
+
+21. **Q:** What is the equation of a Bezier curve?
+    **A:**
+
+    $$
+    B(t) = \sum_{i=0}^{n} \binom{n}{i}(1-t)^{n-i} t^i P_i,\quad 0 \le t \le 1
+    $$
+
+    Where $P_i$ are control points.
+
+22. **Q:** What is de Casteljau’s algorithm?
+    **A:** A recursive method to compute points on a Bezier curve.
+
+23. **Q:** What are the properties of Bezier curves?
+    **A:**
+
+    * Always passes through first and last control points.
+    * Lies within the convex hull of its control points.
+    * Smooth and continuous.
+
+24. **Q:** What are B-Spline curves?
+    **A:** Basis Spline curves — generalizations of Bezier curves that provide more control and flexibility.
+
+25. **Q:** Difference between Bezier and B-Spline curves?
+    **A:**
+
+    * **Bezier**: Single polynomial over entire curve.
+    * **B-Spline**: Piecewise polynomials; local control.
+    * **B-Spline** does not necessarily pass through control points.
+
+26. **Q:** What is a control polygon?
+    **A:** A polyline connecting control points of a curve, giving a visual guide to the shape of the curve.
+
+27. **Q:** What is interpolation vs approximation in curves?
+    **A:**
+
+    * **Interpolation**: Curve passes through all control points.
+    * **Approximation**: Curve stays close to but does not pass through control points.
+
+28. **Q:** What is the role of parameter `t` in Bezier curves?
+    **A:** It varies from 0 to 1 and determines the position along the curve.
+
+Sure, Prakhar! Here is a **comprehensive list of theoretical viva questions** for **Computer Graphics (with OpenGL)** — including **basic concepts, 2D/3D graphics, algorithms, transformations, projections, and OpenGL-specific topics** — all with clear, concise **answers**.
+
+---
+
+## 🔷 **1. Basics of Computer Graphics**
+
+1. **Q:** What is Computer Graphics?
+   **A:** It's a field of computer science that deals with creating, manipulating, and displaying images using computers.
+
+2. **Q:** What are the types of computer graphics?
+   **A:**
+
+   * **Raster Graphics**: Pixel-based (e.g., images).
+   * **Vector Graphics**: Defined using geometry (e.g., lines, curves).
+
+3. **Q:** What is a pixel?
+   **A:** A pixel is the smallest addressable unit in a digital image or display.
+
+4. **Q:** What is resolution?
+   **A:** The number of pixels in each dimension of an image (e.g., 1920×1080).
+
+5. **Q:** What is a frame buffer?
+   **A:** A memory area where image data (pixels) is stored before being displayed on the screen.
+
+---
+
+## 🔷 **2. Output Primitives**
+
+6. **Q:** What are output primitives?
+   **A:** Basic elements used to construct graphics — like points, lines, circles, polygons.
+
+7. **Q:** What is line clipping?
+   **A:** The process of removing parts of a line that lie outside the view area.
+
+8. **Q:** Name two line clipping algorithms.
+   **A:**
+
+   * Cohen-Sutherland
+   * Liang-Barsky
+
+---
+
+## 🔷 **3. Drawing Algorithms**
+
+9. **Q:** What is DDA algorithm?
+   **A:** A line-drawing algorithm that uses floating-point arithmetic to calculate intermediate points.
+
+10. **Q:** What is Bresenham’s Line Algorithm?
+    **A:** A faster line-drawing algorithm using only integer arithmetic.
+
+11. **Q:** What is Midpoint Circle Algorithm?
+    **A:** An efficient algorithm to draw circles using symmetry and integer arithmetic.
+
+12. **Q:** Which algorithm is better: DDA or Bresenham? Why?
+    **A:** Bresenham is better because it avoids floating-point calculations, making it faster.
+
+---
+
+## 🔷 **4. 2D Transformations**
+
+13. **Q:** What are the basic 2D transformations?
+    **A:**
+
+* Translation
+* Rotation
+* Scaling
+* Reflection
+* Shearing
+
+14. **Q:** What are homogeneous coordinates?
+    **A:** An extra coordinate added (usually w=1) to enable matrix-based transformation operations.
+
+15. **Q:** What is the use of transformation matrices?
+    **A:** They allow combining multiple transformations using matrix multiplication.
+
+---
+
+## 🔷 **5. 3D Transformations**
+
+16. **Q:** What are 3D transformations?
+    **A:** They include 3D translation, rotation (about x, y, z axes), scaling, and perspective projection.
+
+17. **Q:** What is the difference between orthographic and perspective projection?
+    **A:**
+
+* **Orthographic**: Parallel projection, no depth (used in CAD).
+* **Perspective**: Mimics human eye; objects appear smaller as they are farther.
+
+18. **Q:** What is view volume?
+    **A:** A 3D region in space that defines what is visible in the scene.
+
+---
+
+## 🔷 **6. Clipping & Windowing**
+
+19. **Q:** What is clipping?
+    **A:** It’s the process of restricting the rendering to a defined area (like the viewport).
+
+20. **Q:** What is a viewport?
+    **A:** The rectangular area of the window where the final image is displayed.
+
+21. **Q:** What is the difference between window and viewport?
+    **A:**
+
+* **Window**: Region in world coordinates.
+* **Viewport**: Region on the display device (screen coordinates).
+
+---
+
+## 🔷 **7. OpenGL Specific Questions**
+
+22. **Q:** What is OpenGL?
+    **A:** A cross-platform API for rendering 2D and 3D graphics.
+
+23. **Q:** What is GLUT?
+    **A:** The OpenGL Utility Toolkit – used for handling windowing, keyboard, and mouse inputs.
+
+24. **Q:** What is the function of `glutInit()`?
+    **A:** Initializes GLUT and processes command-line arguments.
+
+25. **Q:** What is `glutDisplayFunc()`?
+    **A:** Registers the display callback function where rendering is done.
+
+26. **Q:** What is `glFlush()`?
+    **A:** Ensures all OpenGL commands are executed (used in single-buffered mode).
+
+27. **Q:** How do you set background color in OpenGL?
+    **A:** Using `glClearColor(r, g, b, a);`
+
+28. **Q:** What is the function of `gluOrtho2D()`?
+    **A:** Sets up a 2D orthographic projection matrix.
+
+29. **Q:** How do you draw a triangle in OpenGL?
+    **A:**
+
+```cpp
+glBegin(GL_TRIANGLES);
+glVertex2f(x1, y1);
+glVertex2f(x2, y2);
+glVertex2f(x3, y3);
+glEnd();
+```
+
+30. **Q:** What is the use of `glMatrixMode()`?
+    **A:** Sets the current matrix stack — `GL_PROJECTION` or `GL_MODELVIEW`.
+
+---
+
+## 🔷 **8. Advanced & Miscellaneous**
+
+31. **Q:** What is double buffering?
+    **A:** A technique where drawing is done on a back buffer, and then buffers are swapped to prevent flicker.
+
+32. **Q:** What is shading?
+    **A:** The process of adding color and lighting effects to make objects appear more realistic.
+
+33. **Q:** What are Bezier curves?
+    **A:** Smooth curves defined using control points — commonly used in vector graphics.
+
+34. **Q:** What is anti-aliasing?
+    **A:** A technique to reduce jagged edges in images by smoothing pixel colors.
+
+35. **Q:** What is rasterization?
+    **A:** The process of converting geometric data (like lines and triangles) into pixels.
+
+36. **Q:** What is Z-buffering?
+    **A:** A technique used to handle depth (which object is in front of which).
+
+---
+
+Let me know if you'd like this in **PDF format**, or if you want **subjective/long-answer questions** for written exams too.
