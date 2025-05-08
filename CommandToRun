@@ -1,0 +1,5 @@
+g++ filename.cpp -o filename -lGL -lGLU -lglut
+or 
+g++ filename.cpp -o filename -lGL -lGLU -lglut -o output
+
+./filename
